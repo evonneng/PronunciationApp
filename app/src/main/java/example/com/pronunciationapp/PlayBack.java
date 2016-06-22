@@ -9,8 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.speech.tts.TextToSpeech;
+
+import java.util.Locale;
 
 public class PlayBack extends AppCompatActivity {
+    TextToSpeech player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,7 @@ public class PlayBack extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //show the text typed in by the user
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView usrTxt = new TextView(this);
@@ -26,6 +31,18 @@ public class PlayBack extends AppCompatActivity {
         usrTxt.setTextSize(40);
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.usrTxt);
         layout.addView(usrTxt);
+
+        //initializing the player
+        player=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    player.setLanguage(Locale.UK);
+                }
+            }
+        });
+        //play the string message passed to the player
+        player.speak(message, TextToSpeech.QUEUE_FLUSH, null);
     }
 
 }
