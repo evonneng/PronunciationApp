@@ -28,6 +28,13 @@ public class PlayBack extends AppCompatActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_back);
 
+        String message = getString();
+        TextView usrTxt = new TextView(this);
+        usrTxt.setTextSize(40);
+        usrTxt.setText(message);
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.playback);
+        layout.addView(usrTxt);
+
         //get a reference to the button element listed in the XML layout
         Button speakButton = (Button)findViewById(R.id.play_button);
         //listen for clicks
@@ -41,19 +48,20 @@ public class PlayBack extends AppCompatActivity implements View.OnClickListener,
 
     //respond to button clicks
     public void onClick(View v) {
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        TextView usrTxt = new TextView(this);
-        usrTxt.setTextSize(40);
-        usrTxt.setText(message);
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.playback);
-        layout.addView(usrTxt);
+        String message = getString();
+        speakWords(message);
     }
 
     //speak the user text
     private void speakWords(String speech) {
         //speak straight away
-        
+        myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    private String getString() {
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        return message;
     }
 
     //act on result of TTS data check

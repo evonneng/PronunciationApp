@@ -5,4 +5,5 @@
     <string name="button">Read text</string>
     <string name="title_activity_play_back">PlayBack</string>
     <string name="robot">robot</string>
+    <string name="tap_hint">Tap the screen</string>
 </resources>
