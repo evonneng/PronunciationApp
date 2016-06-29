@@ -4,5 +4,8 @@ A fun little app that uses a voice over library to pronounce the word that the u
 
 Written for Android phones. 
 
-To open: compile with gradle script and run on emulator/ android phone on debug mode
-Credits: 
+To open: compile with gradle script and run on emulator/ android phone
+
+Credits: used Android's TextToSpeech library
+
+Project Goals: learn the basics of UI/UX design and features of Android Studio
