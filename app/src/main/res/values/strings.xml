@@ -6,4 +6,17 @@
     <string name="title_activity_play_back">PlayBack</string>
     <string name="robot">robot</string>
     <string name="tap_hint">Tap the screen</string>
+
+    <string-array name="lang_arr">
+        <item>English (US)</item>
+        <item>English (UK)</item>
+        <item>Chinese</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Spanish</item>
+        <item>Korean</item>
+    </string-array>
+
 </resources>
