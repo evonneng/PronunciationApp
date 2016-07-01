@@ -50,14 +50,13 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="160dp"
-        android:layout_height="57dp"
+        android:layout_width="105dp"
+        android:layout_height="49dp"
         android:hint="@string/button"
         android:id="@+id/button"
         android:layout_below="@+id/editText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:textSize="20dp"
         android:onClick="onClick"
         android:layout_gravity="right|center_vertical" />
 
