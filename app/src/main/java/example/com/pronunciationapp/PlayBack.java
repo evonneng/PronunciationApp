@@ -79,11 +79,48 @@ public class PlayBack extends Activity implements View.OnClickListener, TextToSp
 
     //setup TTS
     public void onInit(int initStatus) {
-
+        String lang = MainActivity.get_lang();
         //check for successful instantiation
         if (initStatus == TextToSpeech.SUCCESS) {
-            if(myTTS.isLanguageAvailable(Locale.US)==TextToSpeech.LANG_AVAILABLE)
-                myTTS.setLanguage(Locale.US);
+            switch (lang) {
+                case "English (US)":
+                    if (myTTS.isLanguageAvailable(Locale.US) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.US);
+                    break;
+                case "English (UK)":
+                    if (myTTS.isLanguageAvailable(Locale.UK) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.UK);
+                    break;
+                case "Chinese":
+                    if (myTTS.isLanguageAvailable(Locale.CHINESE) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.CHINESE);
+                    break;
+                case "French":
+                    if (myTTS.isLanguageAvailable(Locale.FRENCH) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.FRENCH);
+                    break;
+                case "German":
+                    if (myTTS.isLanguageAvailable(Locale.GERMAN) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.GERMAN);
+                    break;
+                case "Italian":
+                    if (myTTS.isLanguageAvailable(Locale.ITALIAN) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.ITALIAN);
+                    break;
+                case "Japanese":
+                    if (myTTS.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.JAPANESE);
+                    break;
+                case "Spanish":
+                    Locale locSpanish = new Locale("spa", "MEX");
+                    if (myTTS.isLanguageAvailable(locSpanish) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(locSpanish);
+                    break;
+                case "Korean":
+                    if (myTTS.isLanguageAvailable(Locale.KOREAN) == TextToSpeech.LANG_AVAILABLE)
+                        myTTS.setLanguage(Locale.KOREAN);
+                    break;
+            }
         }
         else if (initStatus == TextToSpeech.ERROR) {
             Toast.makeText(this, "Sorry! Unable to read input...", Toast.LENGTH_LONG).show();

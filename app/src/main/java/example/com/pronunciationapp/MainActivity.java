@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 public class MainActivity extends Activity {
     public final static String EXTRA_MESSAGE = "example.com.pronunciationapp.MESSAGE";
+    private static String lang_choice = "US"; //Default value
     private Spinner lang_spinner;
 
     @Override
@@ -57,5 +59,20 @@ public class MainActivity extends Activity {
                 R.array.lang_arr, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         lang_spinner.setAdapter(adapter);
+        lang_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                lang_choice = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent){
+
+            }
+        });
+    }
+
+    public static String get_lang() {
+        return lang_choice;
     }
 }
